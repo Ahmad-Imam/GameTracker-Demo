@@ -3,9 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergg/constants.dart';
-import 'file:///D:/Fluttttttter/flutter_gg/lib/push_gen.dart';
 import 'package:fluttergg/pages/home.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+
+
+import '../push_gen.dart';
 
 final _firestore = Firestore.instance;
 //FirebaseUser loggedsuser;
