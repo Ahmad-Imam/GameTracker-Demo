@@ -15,7 +15,7 @@ class _ActivityFeedState extends State<ActivityFeed> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: header(context, titleText: "User List"),
-      backgroundColor: Colors.grey.withOpacity(.1),
+      backgroundColor: Colors.grey.withOpacity(.15),
       body: StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance.collection('users').snapshots(),
         builder: (context, snapshot) {

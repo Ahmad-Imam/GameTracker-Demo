@@ -29,7 +29,7 @@ class _ProfileState extends State<Profile> {
   Widget build(context) {
     return Scaffold(
       //appBar: header(context, titleText: "Timeline"),
-      backgroundColor: Colors.grey.withOpacity(.1),
+      backgroundColor: Colors.grey.withOpacity(.15),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

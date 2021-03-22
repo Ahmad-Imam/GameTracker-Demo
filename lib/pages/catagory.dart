@@ -6,7 +6,7 @@ import 'package:fluttergg/pages/game_profile.dart';
 import 'package:fluttergg/widgets/header.dart';
 
 class Catagory extends StatefulWidget {
-  Catagory({this.tname, this.link,this.pname});
+  Catagory({this.tname, this.link, this.pname});
 
   final String tname;
   final String link;
@@ -23,8 +23,6 @@ class _CatagoryState extends State<Catagory> with TickerProviderStateMixin {
     super.initState();
     //print('ID: ${widget.id}');
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -57,17 +55,21 @@ class _CatagoryState extends State<Catagory> with TickerProviderStateMixin {
                       Expanded(
                         child: CachedNetworkImage(
                           imageUrl: widget.link,
-                          placeholder: (context, url) => CircularProgressIndicator(),
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
                         ),
                       ),
-                      Text(widget.tname,style: TextStyle(color: Colors.white,fontSize: 50),),
+                      Text(
+                        widget.tname,
+                        style: TextStyle(color: Colors.white, fontSize: 50),
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
 
-        //Text('vavasfaf',style: TextStyle(color: Colors.white,fontSize: 100),),
+            //Text('vavasfaf',style: TextStyle(color: Colors.white,fontSize: 100),),
 
 //        SliverList(
 //          delegate:
@@ -83,48 +85,48 @@ class _CatagoryState extends State<Catagory> with TickerProviderStateMixin {
                   if (snapshot.hasData) {
 //                   QuerySnapshot snap= Firestore.instance.collection('games').where('type',isEqualTo: widget.id).getDocuments();
                     //final List<String> lst=
-                    print('sbap:${snapshot.data}');
+                    //print('sbap:${snapshot.data}');
                     return SliverList(
                       delegate: SliverChildBuilderDelegate((context, index) {
-                        return
-                          Container(
-                            color: Colors.grey.withOpacity(.1),
-                            child: Column(
-                              children: [
+                        return Container(
+                          color: Colors.grey.withOpacity(.1),
+                          child: Column(children: [
 //                              Container(
 //                                  height: 200,
 //                                  width: 200,
 //                                  child: Text('vavasfaf',style: TextStyle(color: Colors.white,fontSize: 50),)),
-                                GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => GameProfile(
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => GameProfile(
 //                                              id: snapshot.data.documents[index]
 //                                                  ['id'],
-                                            link: snapshot.data.documents[index]['link'],
-                                            name: snapshot.data.documents[index]['name'],
-                                          )));
-                                },
-
-                                child: Container(
-                                  height: 250,
-                                  width: 350,
-                                  child: Column(
-                                    children: [
-
-                                      CachedNetworkImage(
-                                        imageUrl: snapshot.data.documents[index]['link'],
-                                        placeholder: (context, url) => CircularProgressIndicator(),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ],
-                                  ),
+                                              link: snapshot.data
+                                                  .documents[index]['link'],
+                                              name: snapshot.data
+                                                  .documents[index]['name'],
+                                            )));
+                              },
+                              child: Container(
+                                height: 250,
+                                width: 350,
+                                child: Column(
+                                  children: [
+                                    CachedNetworkImage(
+                                      imageUrl: snapshot.data.documents[index]
+                                          ['link'],
+                                      placeholder: (context, url) =>
+                                          CircularProgressIndicator(),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ],
                                 ),
-                              ),]
+                              ),
                             ),
-                          );
+                          ]),
+                        );
                       },
                           childCount: snapshot.hasData
                               ? snapshot.data.documents.length
@@ -133,8 +135,7 @@ class _CatagoryState extends State<Catagory> with TickerProviderStateMixin {
                   }
                   return SliverList(
                     delegate:
-                        SliverChildListDelegate([
-                          CircularProgressIndicator()]),
+                        SliverChildListDelegate([CircularProgressIndicator()]),
                   );
                 }),
           ],

@@ -146,6 +146,7 @@ class _CreateAccountState extends State<CreateAccount> {
   @override
   Widget build(BuildContext parentContext) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey.withOpacity(.15),
       key: _scaffoldKey,
       appBar: header(context,
           titleText: "Set up your profile", removeBackButton: true),
@@ -159,7 +160,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   child: Center(
                     child: Text(
                       "Create a username",
-                      style: TextStyle(fontSize: 25.0),
+                      style: TextStyle(fontSize: 25.0,color: Colors.white),
                     ),
                   ),
                 ),
@@ -170,6 +171,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       key: _formKey,
                       autovalidate: true,
                       child: TextFormField(
+                        style: TextStyle(color: Colors.white),
                         validator: (val) {
                           if (val.trim().length < 3 || val.isEmpty) {
                             return "Username too short";
@@ -186,9 +188,10 @@ class _CreateAccountState extends State<CreateAccount> {
                           });
                         },
                         decoration: InputDecoration(
+                          fillColor: Colors.white,
                           border: OutlineInputBorder(),
                           labelText: "Username",
-                          labelStyle: TextStyle(fontSize: 15.0),
+                          labelStyle: TextStyle(fontSize: 15.0,color: Colors.white),
                           hintText: "Must be at least 3 characters",
                         ),
                       ),
@@ -210,7 +213,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           fontSize: 22.0,
                         ),
                       ),
-                      color: Colors.deepOrange,
+                      color: Colors.deepPurpleAccent.withOpacity(.6),
                       onPressed: () => selectImage(context)
                   ),
                 ),
@@ -227,7 +230,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     height: 50.0,
                     width: 350.0,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.deepPurple.withOpacity(.6),
                       borderRadius: BorderRadius.circular(7.0),
                     ),
                     child: Center(

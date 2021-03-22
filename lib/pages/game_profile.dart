@@ -8,7 +8,6 @@ import 'package:fluttergg/pages/home.dart';
 import 'package:fluttergg/widgets/header.dart';
 import 'package:configurable_expansion_tile/configurable_expansion_tile.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
-import 'package:circular_check_box/circular_check_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GameProfile extends StatefulWidget {
@@ -56,6 +55,7 @@ class _GameProfileState extends State<GameProfile>
   bool toUpdate = false;
   bool toUpdate2 = false;
   Future mainComplete(AsyncSnapshot snapshot) async {
+    print('maincom maincom $maincom dlccom $dlccom');
     if (main_game_check_value == true) {
        // print('main update');
 //        await Firestore.instance
@@ -146,6 +146,7 @@ class _GameProfileState extends State<GameProfile>
   }
 
   Future dlcComplete(AsyncSnapshot snapshot) async {
+    print('dlccom  maincom $maincom dlccom $dlccom');
     if (dlc_game_check_value == true) {
       print('dlc update');
 //        await Firestore.instance
@@ -180,7 +181,8 @@ class _GameProfileState extends State<GameProfile>
   }
 
   Future fullComplete(AsyncSnapshot snapshot) async {
-    if (main_game_check_value == true && dlc_game_check_value == true) {
+    print('fullcom maincom $maincom dlccom $dlccom');
+    if (maincom == 1 && dlccom == 1) {
      // print('FULL update');
         await Firestore.instance
             .collection('users')
@@ -221,6 +223,7 @@ class _GameProfileState extends State<GameProfile>
   }
 
   Future halfComplete(AsyncSnapshot snapshot) async {
+    print('half maincom $maincom dlccom $dlccom');
     if (maincom ^ dlccom==1) {
       // print('FULL update');
       await Firestore.instance
@@ -795,13 +798,13 @@ class _GameProfileState extends State<GameProfile>
                               ),
                               trailing: Container(
                                 width: 30,
-                                child: CircularCheckBox(
+                                child: Checkbox(
                                     value: add_game_list_check_value,
                                     //snapshot.data.documents[0]['userlist'][currentUser.id],
                                     checkColor: Colors.redAccent,
                                     activeColor: Colors.amberAccent,
-                                    inactiveColor: Colors.amberAccent,
-                                    disabledColor: Colors.amberAccent,
+                                    // inactiveColor: Colors.amberAccent,
+                                    // disabledColor: Colors.amberAccent,
                                     onChanged: (value) async {
                                       setState(() {
                                         add_game_list_check_value = value;
@@ -897,17 +900,18 @@ class _GameProfileState extends State<GameProfile>
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             120, 0, 0, 0),
-                                        child: CircularCheckBox(
+                                        child: Checkbox(
                                           value: main_game_check_value,
                                           checkColor: Colors.redAccent,
                                           activeColor: Colors.amberAccent,
-                                          inactiveColor: Colors.amberAccent,
-                                          disabledColor: Colors.amberAccent,
+                                          // inactiveColor: Colors.amberAccent,
+                                          // disabledColor: Colors.amberAccent,
                                           onChanged: (value) {
                                             setState(() {
-                                              print('value MAin game: $value');
-                                              value==true?maincom=1:maincom=0;
+                                              //print('value MAin game: $value');
                                               main_game_check_value = value;
+                                              value==true?maincom=1:maincom=0;
+
                                               if(main_game_check_value==true) {
                                                 add_game_list_check_value = true;
 
@@ -973,12 +977,12 @@ class _GameProfileState extends State<GameProfile>
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
                                             200, 0, 0, 0),
-                                        child: CircularCheckBox(
+                                        child: Checkbox(
                                           value: dlc_game_check_value,
                                           checkColor: Colors.redAccent,
                                           activeColor: Colors.amberAccent,
-                                          inactiveColor: Colors.amberAccent,
-                                          disabledColor: Colors.amberAccent,
+                                          // inactiveColor: Colors.amberAccent,
+                                          // disabledColor: Colors.amberAccent,
                                           onChanged: (value)  {
                                             setState(() {
 
@@ -1123,12 +1127,12 @@ class _GameProfileState extends State<GameProfile>
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 0, horizontal: 0),
-                                          child: CircularCheckBox(
+                                          child: Checkbox(
                                             value: true,
                                             checkColor: Colors.green,
                                             activeColor: Colors.white,
-                                            inactiveColor: Colors.white,
-                                            disabledColor: Colors.amberAccent,
+                                            // inactiveColor: Colors.white,
+                                            // disabledColor: Colors.amberAccent,
                                           ),
                                         )
                                       ],

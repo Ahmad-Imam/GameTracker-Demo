@@ -18,13 +18,7 @@ class Browse extends StatefulWidget {
 }
 
 class _BrowseState extends State<Browse> {
-  List<String> ad = [
-    'http://via.placeholder.com/350x150',
-    'http://via.placeholder.com/350x200',
-    'http://via.placeholder.com/350x400',
-    'http://via.placeholder.com/350x150',
-    'http://via.placeholder.com/350x650'
-  ];
+
 
   int ab;
   @override
@@ -49,7 +43,7 @@ class _BrowseState extends State<Browse> {
 
     return Scaffold(
       appBar: header(context, titleText: "Browse"),
-      backgroundColor: Colors.grey.withOpacity(.1),
+      backgroundColor: Colors.grey.withOpacity(.15),
       body: Column(
         children: [
           Expanded(
@@ -63,11 +57,12 @@ class _BrowseState extends State<Browse> {
                       return Hero(
                         tag: 'hero',
                         child: Swiper(
+                          autoplay: true,
                           scrollDirection: Axis.vertical,
                           //autoplay: true,
                           itemBuilder: (BuildContext context, int index) {
                             ab=index;
-                            index==1?print(index):print('adsad'+index.toString());
+                            //index==1?print(index):print('adsad'+index.toString());
                             /*aa = snapshot.data.documents[index]['link'];
                               print('aa: $aa');*/
                             return Container(
@@ -75,20 +70,18 @@ class _BrowseState extends State<Browse> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Expanded(
-                                    child: CachedNetworkImage(
-                                      imageUrl: snapshot.data.documents[index]['link'],
-                                      placeholder: (context, url) => CircularProgressIndicator(),
+                                    child: Container(
+                                      width: 200,
+                                      height: 200,
+                                      child: CachedNetworkImage(
+                                        imageUrl: snapshot.data.documents[index]['link'],
+                                        placeholder: (context, url) => CircularProgressIndicator(),
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 50.0),
-                                    child: Text(  ab==index?
-                                      '${snapshot.data.documents[index]['tname']}':'vsdf',
-                                      style: TextStyle(color: Colors.white,fontSize: 20),
-                                    ),
+                                  Text(  ab==index?
+                                    '${snapshot.data.documents[index]['tname']}':'vsdf',
+                                    style: TextStyle(color: Colors.white,fontSize: 20),
                                   )
                                 ],
                               ),
@@ -96,10 +89,10 @@ class _BrowseState extends State<Browse> {
                           },
                           itemCount: snapshot.data.documents.length,
 //                        pagination: SwiperPagination(),
-                          layout: SwiperLayout.STACK,
+                          layout: SwiperLayout.DEFAULT,
 
-                          itemWidth: 500,
-                          itemHeight: 300,
+                          //itemWidth: 500,
+                          //itemHeight: 300,
                           onTap: (index) {
 //                          print(index);
 
@@ -133,6 +126,7 @@ class _BrowseState extends State<Browse> {
                     return Hero(
                       tag: 'hero1',
                       child: Swiper(
+                        autoplay: true,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
                           ab=index;
@@ -143,8 +137,9 @@ class _BrowseState extends State<Browse> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Expanded(
-                                  child: ColorFiltered(
-                                    colorFilter: ColorFilter.mode(Colors.red, BlendMode.color),
+                                  child: Container(
+                                    height:200,
+                                    width: 200,
                                     child: CachedNetworkImage(
                                       imageUrl: snapshot.data.documents[index]['link'],
                                       placeholder: (context, url) => CircularProgressIndicator(),
@@ -171,9 +166,9 @@ class _BrowseState extends State<Browse> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PlatfromCatagory(
+                                  builder: (context) => PlatformCatagory(
                                     pname: snapshot.data.documents[index]
-                                    ['pname'] ,
+                                    ['pname'],
                                     link: snapshot.data.documents[index]
                                     ['link'],
                                   )));
