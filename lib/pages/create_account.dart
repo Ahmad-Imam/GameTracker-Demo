@@ -134,8 +134,6 @@ class _CreateAccountState extends State<CreateAccount> {
             }
         );
       }
-
-
 //    captionController.clear();
 //    setState(() {
 //      file = null;

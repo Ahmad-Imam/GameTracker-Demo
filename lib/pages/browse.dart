@@ -75,7 +75,7 @@ class _BrowseState extends State<Browse> {
                                       height: 200,
                                       child: CachedNetworkImage(
                                         imageUrl: snapshot.data.documents[index]['link'],
-                                        placeholder: (context, url) => CircularProgressIndicator(),
+                                        //placeholder: (context, url) => CircularProgressIndicator(),
                                       ),
                                     ),
                                   ),
@@ -142,7 +142,7 @@ class _BrowseState extends State<Browse> {
                                     width: 200,
                                     child: CachedNetworkImage(
                                       imageUrl: snapshot.data.documents[index]['link'],
-                                      placeholder: (context, url) => CircularProgressIndicator(),
+                                      //placeholder: (context, url) => CircularProgressIndicator(),
                                     ),
                                   ),
                                 ),
